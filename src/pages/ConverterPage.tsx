@@ -6,10 +6,13 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/components/ui/use-toast";
 import { FileText, Download, Upload, ArrowRightLeft } from "lucide-react";
-import { PDFDocument } from "pdf-lib";
-import { Document, Packer, Paragraph, TextRun } from "docx";
+import * as pdfjsLib from "pdfjs-dist";
+import htmlDocx from "html-docx-js";
 import mammoth from "mammoth";
 import jsPDF from "jspdf";
+
+// Set up PDF.js worker
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 const ConverterPage = () => {
   const [isConverting, setIsConverting] = useState(false);
@@ -30,51 +33,47 @@ const ConverterPage = () => {
     setIsConverting(true);
     try {
       const arrayBuffer = await pdfFile.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(arrayBuffer);
-      const pages = pdfDoc.getPages();
+      const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
       
-      // Extract text from PDF (basic implementation)
       let extractedText = "";
-      for (let i = 0; i < pages.length; i++) {
-        extractedText += `Page ${i + 1}\n\n`;
-        // Note: This is a simplified version. For complex PDFs, you'd need a more sophisticated text extraction library
-        extractedText += `[Content from page ${i + 1} - PDF text extraction requires advanced libraries for complete accuracy]\n\n`;
+      
+      // Extract text from each page
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        const page = await pdf.getPage(pageNum);
+        const textContent = await page.getTextContent();
+        
+        let pageText = "";
+        textContent.items.forEach((item: any) => {
+          if (item.str) {
+            pageText += item.str + " ";
+          }
+        });
+        
+        extractedText += `Page ${pageNum}\n\n${pageText}\n\n`;
       }
 
-      // Create Word document
-      const doc = new Document({
-        sections: [
-          {
-            properties: {},
-            children: [
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: "Converted from PDF",
-                    bold: true,
-                    size: 28,
-                  }),
-                ],
-              }),
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: extractedText,
-                    size: 24,
-                  }),
-                ],
-              }),
-            ],
-          },
-        ],
-      });
+      // Create HTML content for Word document
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Converted from PDF</title>
+        </head>
+        <body>
+          <h1>Converted from PDF</h1>
+          <p>Original file: ${pdfFile.name}</p>
+          <div style="white-space: pre-wrap; font-family: Arial, sans-serif; line-height: 1.6;">
+            ${extractedText.replace(/\n/g, '<br>')}
+          </div>
+        </body>
+        </html>
+      `;
 
-      const buffer = await Packer.toBuffer(doc);
-      const blob = new Blob([buffer], { 
-        type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
-      });
+      // Convert HTML to Word document
+      const docxBlob = htmlDocx.asBlob(htmlContent);
       
-      const url = URL.createObjectURL(blob);
+      const url = URL.createObjectURL(docxBlob);
       const link = document.createElement("a");
       link.href = url;
       link.download = `${pdfFile.name.replace('.pdf', '')}_converted.docx`;
@@ -90,7 +89,7 @@ const ConverterPage = () => {
       console.error("Error converting PDF to Word:", error);
       toast({
         title: "Error",
-        description: "Failed to convert PDF to Word",
+        description: "Failed to convert PDF to Word. Please ensure the PDF is not password protected.",
         variant: "destructive",
       });
     } finally {
