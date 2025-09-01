@@ -177,7 +177,11 @@ const CheckPage = () => {
                     
                     <div className="space-y-2">
                       <Label htmlFor="file">Upload Document (PDF/DOCX) *</Label>
-                      <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
+                      <div className={`border-2 border-dashed rounded-lg p-6 text-center transition-all duration-300 ${
+                        formData.file 
+                          ? "border-primary/50 bg-primary/5" 
+                          : "border-muted-foreground/25 hover:border-primary/50 hover:bg-primary/5"
+                      }`}>
                         <input
                           id="file"
                           type="file"
@@ -187,10 +191,16 @@ const CheckPage = () => {
                           required
                         />
                         <label htmlFor="file" className="cursor-pointer">
-                          <Upload className="mx-auto h-8 w-8 text-muted-foreground mb-2" />
-                          <p className="text-sm text-muted-foreground">
+                          <div className={`transition-all duration-300 ${formData.file ? "scale-110" : ""}`}>
+                            <Upload className={`mx-auto h-8 w-8 mb-2 transition-colors ${
+                              formData.file ? "text-primary" : "text-muted-foreground"
+                            }`} />
+                          </div>
+                          <p className={`text-sm transition-colors ${
+                            formData.file ? "text-primary font-medium" : "text-muted-foreground"
+                          }`}>
                             {formData.file ? (
-                              <span className="text-primary font-medium">{formData.file.name}</span>
+                              formData.file.name
                             ) : (
                               "Click to upload or drag and drop your document"
                             )}
@@ -198,6 +208,11 @@ const CheckPage = () => {
                           <p className="text-xs text-muted-foreground mt-1">
                             Supported formats: PDF, DOCX (Max: 10,000 pages)
                           </p>
+                          {formData.file && (
+                            <p className="text-xs text-primary mt-2 animate-fade-in">
+                              ✓ File uploaded successfully
+                            </p>
+                          )}
                         </label>
                       </div>
                     </div>
@@ -272,11 +287,14 @@ const CheckPage = () => {
                     type="submit" 
                     variant="hero" 
                     size="lg" 
-                    className="w-full"
-                    disabled={isSubmitting}
+                    className="w-full hover:scale-105 transition-transform"
+                    disabled={isSubmitting || !formData.file}
                   >
                     {isSubmitting ? (
-                      "Processing..."
+                      <>
+                        <div className="animate-spin h-4 w-4 mr-2 border-2 border-white border-t-transparent rounded-full" />
+                        Processing...
+                      </>
                     ) : (
                       <>
                         <Send className="mr-2 h-5 w-5" />

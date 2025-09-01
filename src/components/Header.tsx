@@ -32,14 +32,6 @@ const Header = () => {
           >
             Check Document
           </Link>
-          <Link 
-            to="/converter" 
-            className={`text-sm font-medium transition-colors hover:text-primary ${
-              location.pathname === "/converter" ? "text-primary" : "text-muted-foreground"
-            }`}
-          >
-            Converter
-          </Link>
         </nav>
 
         <div className="flex items-center space-x-4">

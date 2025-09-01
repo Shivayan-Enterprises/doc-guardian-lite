@@ -69,13 +69,13 @@ const HomePage = () => {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild variant="hero" size="lg">
+                <Button asChild variant="hero" size="lg" className="hover:scale-105 transition-transform">
                   <Link to="/check">
                     <FileText className="mr-2 h-5 w-5" />
                     Start Plagiarism Check
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="hover:scale-105 transition-transform">
                   <Users className="mr-2 h-5 w-5" />
                   Learn More
                 </Button>
@@ -117,12 +117,12 @@ const HomePage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center shadow-soft hover:shadow-medium transition-smooth">
+              <Card key={index} className="text-center shadow-soft hover:shadow-medium transition-all duration-300 hover:scale-105 group cursor-pointer">
                 <CardHeader>
-                  <div className="mx-auto mb-4 p-3 bg-muted rounded-full w-fit">
+                  <div className="mx-auto mb-4 p-3 bg-muted rounded-full w-fit group-hover:bg-primary/10 transition-colors">
                     {feature.icon}
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">{feature.description}</p>
@@ -216,7 +216,7 @@ const HomePage = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button asChild variant="hero" size="lg">
+            <Button asChild variant="hero" size="lg" className="hover:scale-105 transition-transform">
               <Link to="/check">
                 Get Started Now
               </Link>
