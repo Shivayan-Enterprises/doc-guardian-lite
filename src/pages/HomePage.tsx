@@ -57,9 +57,9 @@ const HomePage = () => {
                   <Star className="mr-1 h-3 w-3" />
                   Trusted by Students & Professionals
                 </Badge>
-                <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                <h1 className="text-4xl md:text-6xl font-bold leading-tight animate-bounce-in">
                   Professional 
-                  <span className="bg-gradient-hero bg-clip-text text-transparent"> Plagiarism </span>
+                  <span className="text-gradient animate-gradient"> Plagiarism </span>
                   Detection
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-lg">
@@ -92,13 +92,13 @@ const HomePage = () => {
               </div>
             </div>
             
-            <div className="relative">
+            <div className="relative animate-float">
               <img 
                 src={heroImage} 
                 alt="Plagiarism Detection"
-                className="rounded-2xl shadow-medium w-full"
+                className="rounded-2xl shadow-medium w-full hover-lift"
               />
-              <div className="absolute inset-0 bg-gradient-hero opacity-10 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-hero opacity-10 rounded-2xl animate-pulse-glow"></div>
             </div>
           </div>
         </div>
@@ -117,9 +117,9 @@ const HomePage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center shadow-soft hover:shadow-medium transition-all duration-300 hover:scale-105 group cursor-pointer">
+              <Card key={index} className="text-center shadow-soft hover:shadow-medium transition-all duration-300 hover:scale-105 group cursor-pointer card-glow hover-lift animate-bounce-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardHeader>
-                  <div className="mx-auto mb-4 p-3 bg-muted rounded-full w-fit group-hover:bg-primary/10 transition-colors">
+                  <div className="mx-auto mb-4 p-3 bg-muted rounded-full w-fit group-hover:bg-primary/10 transition-colors animate-pulse-glow">
                     {feature.icon}
                   </div>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">{feature.title}</CardTitle>

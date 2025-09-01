@@ -101,8 +101,8 @@ const CheckPage = () => {
   return (
     <div className="min-h-screen bg-muted/30 py-8">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Document Plagiarism Check</h1>
+        <div className="text-center mb-8 animate-bounce-in">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">Document Plagiarism Check</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Upload your document and get comprehensive plagiarism analysis with detailed reporting.
           </p>
@@ -110,8 +110,8 @@ const CheckPage = () => {
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Form Section */}
-          <div className="lg:col-span-2">
-            <Card className="shadow-soft">
+          <div className="lg:col-span-2 animate-bounce-in" style={{animationDelay: "0.2s"}}>
+            <Card className="shadow-soft card-glow hover-lift">
               <CardHeader>
                 <CardTitle className="flex items-center text-xl">
                   <FileText className="mr-2 h-5 w-5 text-primary" />
@@ -308,7 +308,7 @@ const CheckPage = () => {
           </div>
 
           {/* Pricing Calculator */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 animate-bounce-in" style={{animationDelay: "0.4s"}}>
             <div className="sticky top-24">
               <PricingCalculator 
                 pages={formData.pages}
