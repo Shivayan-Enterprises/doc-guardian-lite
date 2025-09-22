@@ -1,24 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>doc-guardian-lite</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocGuardian - Professional Plagiarism Detection</title>
+    <meta name="description" content="Professional plagiarism detection service with advanced algorithms and AI-powered analysis">
+    <meta name="author" content="DocGuardian">
+    
+    <meta property="og:title" content="DocGuardian - Professional Plagiarism Detection">
+    <meta property="og:description" content="Professional plagiarism detection service with advanced algorithms and AI-powered analysis">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span class="logo-text">DocGuardian</span>
+                </a>
+                
+                <nav class="nav">
+                    <a href="#" class="nav-link" onclick="showPage('home')" data-page="home">Home</a>
+                    <a href="#" class="nav-link" onclick="showPage('check')" data-page="check">Check Document</a>
+                </nav>
 
-    <meta property="og:title" content="doc-guardian-lite" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+                <div class="header-actions">
+                    <button class="btn btn-hero" onclick="showPage('check')">
+                        <i class="fas fa-file-text"></i>
+                        Start Check
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <i class="fas fa-star"></i>
+                            Trusted by Students & Professionals
+                        </div>
+                        <h1 class="hero-title animate-bounce-in">
+                            Professional 
+                            <span class="text-gradient animate-gradient"> Plagiarism </span>
+                            Detection
+                        </h1>
+                        <p class="hero-description">
+                            Ensure your documents are original with our advanced plagiarism detection system. 
+                            Fast, accurate, and reliable results every time.
+                        </p>
+                        
+                        <div class="hero-buttons">
+                            <button class="btn btn-hero btn-lg hover-scale" onclick="showPage('check')">
+                                <i class="fas fa-file-text"></i>
+                                Start Plagiarism Check
+                            </button>
+                            <button class="btn btn-outline btn-lg hover-scale">
+                                <i class="fas fa-users"></i>
+                                Learn More
+                            </button>
+                        </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+                        <!-- Stats -->
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">50K+</div>
+                                <div class="stat-label">Documents Checked</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">99.9%</div>
+                                <div class="stat-label">Accuracy Rate</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Support Available</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">&lt; 1min</div>
+                                <div class="stat-label">Average Processing</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-image animate-float">
+                        <img src="src/assets/hero-image.jpg" alt="Plagiarism Detection" class="hero-img hover-lift">
+                        <div class="hero-overlay animate-pulse-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose DocGuardian?</h2>
+                    <p>Our comprehensive plagiarism detection service offers everything you need to ensure document originality.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card card-glow hover-lift animate-bounce-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Advanced Detection</h3>
+                        <p>State-of-the-art algorithms to detect plagiarism across multiple sources</p>
+                    </div>
+                    
+                    <div class="feature-card card-glow hover-lift animate-bounce-in" style="animation-delay: 0.1s">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>AI-Powered Analysis</h3>
+                        <p>Optional AI check for enhanced accuracy and detailed insights</p>
+                    </div>
+                    
+                    <div class="feature-card card-glow hover-lift animate-bounce-in" style="animation-delay: 0.2s">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Flexible Delivery</h3>
+                        <p>Choose from immediate, 1-day, or flexible delivery options</p>
+                    </div>
+                    
+                    <div class="feature-card card-glow hover-lift animate-bounce-in" style="animation-delay: 0.3s">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-check"></i>
+                        </div>
+                        <h3>Multiple Formats</h3>
+                        <p>Support for PDF and DOCX files up to 10,000 pages</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Transparent Pricing</h2>
+                    <p>Pay only for what you need with our flexible page-based pricing system.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Basic Check</h3>
+                        <div class="price">₹2<span>/page</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Up to 100 pages</li>
+                            <li><i class="fas fa-check"></i> Standard detection</li>
+                            <li><i class="fas fa-check"></i> Email delivery</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card popular">
+                        <div class="popular-badge">Most Popular</div>
+                        <h3>Pro Check</h3>
+                        <div class="price">₹1.5<span>/page</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 101-500 pages</li>
+                            <li><i class="fas fa-check"></i> Advanced detection</li>
+                            <li><i class="fas fa-check"></i> Priority processing</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <div class="price">₹1<span>/page</span></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 1000+ pages</li>
+                            <li><i class="fas fa-check"></i> Premium features</li>
+                            <li><i class="fas fa-check"></i> Bulk processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pricing-cta">
+                    <button class="btn btn-hero btn-lg hover-scale" onclick="showPage('check')">
+                        Get Started Now
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Check Page -->
+    <div id="check-page" class="page">
+        <div class="container">
+            <div class="page-header animate-bounce-in">
+                <h1 class="text-gradient">Document Plagiarism Check</h1>
+                <p>Upload your document and get comprehensive plagiarism analysis with detailed reporting.</p>
+            </div>
+
+            <div class="check-content">
+                <!-- Form Section -->
+                <div class="form-section animate-bounce-in" style="animation-delay: 0.2s">
+                    <div class="card form-card card-glow hover-lift">
+                        <div class="card-header">
+                            <h2><i class="fas fa-file-text"></i> Document Submission Form</h2>
+                        </div>
+                        <div class="card-content">
+                            <form id="submission-form">
+                                <!-- Personal Information -->
+                                <div class="form-section-group">
+                                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="name">Full Name *</label>
+                                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number *</label>
+                                            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email">Email Address *</label>
+                                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                                    </div>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <!-- Document Upload -->
+                                <div class="form-section-group">
+                                    <h3><i class="fas fa-upload"></i> Document Upload</h3>
+                                    
+                                    <div class="form-group">
+                                        <label>Upload Document (PDF/DOCX) *</label>
+                                        <div class="file-upload" id="file-upload">
+                                            <input type="file" id="file" name="file" accept=".pdf,.docx" required hidden>
+                                            <div class="file-upload-content">
+                                                <i class="fas fa-upload upload-icon"></i>
+                                                <p class="upload-text">Click to upload or drag and drop your document</p>
+                                                <p class="upload-info">Supported formats: PDF, DOCX (Max: 10,000 pages)</p>
+                                                <div class="upload-success" style="display: none;">
+                                                    <p class="success-text">✓ File uploaded successfully</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <!-- Options -->
+                                <div class="form-section-group">
+                                    <h3><i class="fas fa-calendar"></i> Check Options</h3>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="delivery">Delivery Time</label>
+                                            <select id="delivery" name="delivery">
+                                                <option value="immediate">Immediate (+50% cost)</option>
+                                                <option value="1day">Within 1 Day (+20% cost)</option>
+                                                <option value="anytime" selected>Any time (Standard rate)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="pages">Page Count</label>
+                                            <select id="pages" name="pages">
+                                                <option value="50" selected>50 pages</option>
+                                                <option value="100">100 pages</option>
+                                                <option value="200">200 pages</option>
+                                                <option value="500">500 pages</option>
+                                                <option value="1000">1000 pages</option>
+                                                <option value="2000">2000 pages</option>
+                                                <option value="5000">5000 pages</option>
+                                                <option value="10000">10000 pages</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="aiCheck" name="aiCheck">
+                                            <span class="checkmark"></span>
+                                            <i class="fas fa-bolt"></i> Add AI-Enhanced Check (+₹39)
+                                        </label>
+                                        <p class="checkbox-info">Get advanced AI-powered detection with detailed similarity analysis</p>
+                                    </div>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <button type="submit" class="btn btn-hero btn-lg btn-full hover-scale" id="submit-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Submit for Plagiarism Check
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Calculator -->
+                <div class="pricing-section animate-bounce-in" style="animation-delay: 0.4s">
+                    <div class="card pricing-calculator">
+                        <div class="card-header">
+                            <h3><i class="fas fa-calculator"></i> Price Calculator</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="calculation-item">
+                                <span>Pages:</span>
+                                <span id="calc-pages">50</span>
+                            </div>
+                            <div class="calculation-item">
+                                <span>Rate per page:</span>
+                                <span id="calc-rate">₹2.00</span>
+                            </div>
+                            <div class="calculation-item">
+                                <span>Base cost:</span>
+                                <span id="calc-base">₹100.00</span>
+                            </div>
+                            <div class="calculation-item">
+                                <span>Delivery multiplier:</span>
+                                <span id="calc-delivery">1.0x</span>
+                            </div>
+                            <div class="calculation-item">
+                                <span>AI Enhancement:</span>
+                                <span id="calc-ai">₹0.00</span>
+                            </div>
+                            <div class="separator"></div>
+                            <div class="calculation-total">
+                                <span>Total Cost:</span>
+                                <span id="calc-total">₹100.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content animate-bounce-in">
+            <div class="modal-header">
+                <h3><i class="fas fa-check-circle"></i> Document Submitted Successfully!</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>We've received your document and will process it according to your delivery preference. You'll receive the results via email.</p>
+                <div id="submission-details"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-hero" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
 </html>
